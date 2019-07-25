@@ -2,36 +2,34 @@ package teste.teste.model;
 
 public class TesteApiModelComics {
 
-    private String code;
-    private String status;
+    private String id ;
+    private String title ;
 
-    public TesteApiModelComics( String code, String status ) {
-        this.code = code;
-        this.status = status;
+    public TesteApiModelComics( String id, String title ) {
+        this.id = id;
+        this.title = title;
     }
 
-    public String getCode() {
-        return code;
+    public
+    String getId() {
+        return id;
     }
 
-    public void setCode( String code ) {
-        this.code = code;
+    public
+    void setId( String id ) {
+        this.id = id;
     }
 
-    public String getStatus() {
-        return status;
+    public
+    String getTitle() {
+        return title;
     }
 
-    public void setStatus( String status ) {
-        this.status = status;
+    public
+    void setTitle( String title ) {
+        this.title = title;
     }
 
-    @Override
-    public String toString() {
-        return "TesteApiModelComics{" +
-                "code='" + code + '\'' +
-                ", status='" + status + '\'' +
-                '}';
-    }
+
 
 }

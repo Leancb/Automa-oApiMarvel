@@ -7,12 +7,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 import teste.teste.TesteApplication;
 import teste.teste.model.*;
 
-import static teste.teste.service.ApiServiceCaracters.processarApiCaracters;
-import static teste.teste.service.ApiServiceComics.processarApiComics;
-import static teste.teste.service.ApiServiceCreators.processarApiCreators;
-import static teste.teste.service.ApiServiceEvents.processarApiEvents;
-import static teste.teste.service.ApiServiceSeries.processarApiSeries;
-import static teste.teste.service.ApiServiceStories.processarApiStories;
+
+import static teste.teste.service.ApiServiceCharacterDataWrapper.processarApiCharacterDataWrapper;
+import static teste.teste.service.ApiServiceComicDataWrapper.processarApiComicsDataWrapper;
+import static teste.teste.service.ApiServiceCreatorsDataWrapper.processarApiCreatorDataWrapper;
+import static teste.teste.service.ApiServiceEventDataWrapper.processarApiEventDataWrapper;
+
 
 
 @RunWith(SpringRunner.class)
@@ -21,98 +21,79 @@ import static teste.teste.service.ApiServiceStories.processarApiStories;
 public class TesteService {
 
     @Test
-    public void validaRespostaNotNullCaracters() {
-        TesteApiModelCaracters testeApiModelCaracters = processarApiCaracters();
+    public void validaNomePersonagem() {
 
-        Assert.assertNotNull(testeApiModelCaracters);
-    }
+        TesteApiModelCharacterDataWrapper testeApiModelCharacterDataWrapper = processarApiCharacterDataWrapper();
 
-    @Test
-    public void validaStatus200Caracters() {
-        TesteApiModelCaracters testeApiModelCaracters =  processarApiCaracters();
+        for (TesteApiCharacter testeApiCharacter : testeApiModelCharacterDataWrapper.getData().getResults()) {
 
-        Assert.assertEquals(testeApiModelCaracters.getCode(), "200");
-    }
+            // String nome = testeApiCharacter.getName();
 
-    @Test
-    public void validaRespostaNotNullComics() {
-        TesteApiModelComics testeApiModelComics = processarApiComics();
+            if (testeApiCharacter.getName().equals("3-D Man")) {
 
-        Assert.assertNotNull(testeApiModelComics);
-    }
+                Assert.assertEquals(testeApiCharacter.getName(), "3-D Man");
 
-    @Test
-    public void validaStatus200Comics() {
-        TesteApiModelComics testeApiModelComics =  processarApiComics();
+                System.out.println("Teste para validar que personagem " + testeApiCharacter.getName() + " esta cadastrado passou.");
 
-        Assert.assertEquals(testeApiModelComics.getCode(), "200");
-    }
-
-    @Test
-    public void validaRespostaNotNullCreators() {
-        TesteApiModelCreators testeApiModelCreators = processarApiCreators();
-
-        Assert.assertNotNull(testeApiModelCreators);
-    }
-
-    @Test
-    public void validaStatus200Creators() {
-        TesteApiModelCreators testeApiModelCreators =  processarApiCreators();
-
-        Assert.assertEquals(testeApiModelCreators.getCode(), "200");
+            }
+        }
     }
 
 
     @Test
-    public void validaRespostaNotNullEvents() {
-        TesteApiModelEvents testeApiModelEvents = processarApiEvents();
+    public void validaTitleComics() {
 
-        Assert.assertNotNull(testeApiModelEvents);
-    }
+        TesteApiModelComicDataWrapper testeApiModelComicDataWrapper = processarApiComicsDataWrapper();
 
-    @Test
-    public void validaStatus200Events() {
-        TesteApiModelEvents testeApiModelEvents =  processarApiEvents();
+        for (TesteApiModelComics testeApiModelComics : testeApiModelComicDataWrapper.getData().getResults() ) {
 
-        Assert.assertEquals(testeApiModelEvents.getCode(), "200");
-    }
+            if (testeApiModelComics.getTitle().equals("Storm (2006)")) {
+
+                Assert.assertEquals(testeApiModelComics.getTitle(), "Storm (2006)");
+
+                System.out.println("Teste para validar que o título " + testeApiModelComics.getTitle()+ " esta cadastrado passou.");
 
 
-    @Test
-    public void validaRespostaNotNullSeries() {
-        TesteApiModelSeries testeApiModelSeries = processarApiSeries();
+            }
+        }
 
-        Assert.assertNotNull(testeApiModelSeries);
-    }
-
-    @Test
-    public void validaStatus200Series() {
-        TesteApiModelSeries testeApiModelSeries =  processarApiSeries();
-
-        Assert.assertEquals(testeApiModelSeries.getCode(), "200");
     }
 
 
     @Test
-    public void validaRespostaNotNullStories() {
-        TesteApiModelStories testeApiModelStories = processarApiStories();
+    public void validaPrimeiroNomedoAutor() {
 
-        Assert.assertNotNull(testeApiModelStories);
+        TesteApiModelCreatorsDataWrapper testeApiModelCreatorsDataWrapper = processarApiCreatorDataWrapper();
+
+        for (TesteApiModelCreators testeApiModelCreators : testeApiModelCreatorsDataWrapper.getData().getResults() ) {
+
+            if (testeApiModelCreators.getId().equals("6606")) {
+
+                Assert.assertEquals(testeApiModelCreators.getFirstName(), "A.R.K.");
+
+
+            }
+        }
+
     }
 
     @Test
-    public void validaStatus200Stories() {
-        TesteApiModelStories testeApiModelStories =  processarApiStories();
+    public void validaTituloEvento() {
 
-        Assert.assertEquals(testeApiModelStories.getCode(), "200");
+        TesteApiModelEventDataWrapper  testeApiModelEventDataWrapper = processarApiEventDataWrapper();
+
+        for (TesteApiModelEvents testeApiModelEvents :testeApiModelEventDataWrapper.getData().getResults()) {
+
+            if (testeApiModelEvents.getTitle().equals("Acts of Vengeance!")) {
+
+                Assert.assertEquals(testeApiModelEvents.getTitle(), "Acts of Vengeance!");
+
+                System.out.println("Teste para validar que o título " + testeApiModelEvents.getTitle()+ " esta cadastrado passou.");
+
+            }
+        }
+
     }
 
 
-   /*
-    @Test
-    public void validaStatusOkCaracters() {
-        TesteApiModelCaracters testeApiModelCaracters =  processarApiCaracters();
-
-        Assert.assertEquals(testeApiModelCaracters.getStatus(), "Ok");
-    }*/
 }

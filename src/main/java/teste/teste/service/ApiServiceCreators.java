@@ -17,7 +17,7 @@ public class ApiServiceCreators {
             RestTemplate restTemplate = new RestTemplate();
             TesteApiModelCreators testeApiModelCreators = GsonUtils.stringToObject(restTemplate.getForObject("https://gateway.marvel.com:443/v1/public/creators?ts=1&apikey=96c88fa24ca0e6c5fe37beb77459ddcd&hash=88fb09ca3e362e36e3f6dd10f8132ecd", String.class), TesteApiModelCreators.class);
 
-            if (testeApiModelCreators.getStatus() != null) {
+            if (testeApiModelCreators.getFirstName() != null) {
                 LOG.info("Resposta recebida");
             } else {
                 LOG.info("Um erro ocorreu");

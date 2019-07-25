@@ -3,35 +3,35 @@ package teste.teste.model;
 public class TesteApiModelCreators {
 
 
-    private String code;
-    private String status;
+    private String id;
+    private String firstName;
 
-    public TesteApiModelCreators( String code, String status ) {
-        this.code = code;
-        this.status = status;
+    public TesteApiModelCreators( String id, String firstName ) {
+        this.id = id;
+        this.firstName = firstName;
     }
 
-    public String getCode() {
-        return code;
+    public String getId() {
+        return id;
     }
 
-    public void setCode( String code ) {
-        this.code = code;
+    public void setId( String code ) {
+        this.id = code;
     }
 
-    public String getStatus() {
-        return status;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setStatus( String status ) {
-        this.status = status;
+    public void setFirstName( String status ) {
+        this.firstName = status;
     }
 
     @Override
     public String toString() {
         return "TesteApiModelCreators{" +
-                "code='" + code + '\'' +
-                ", status='" + status + '\'' +
+                "code='" + id + '\'' +
+                ", status='" + firstName + '\'' +
                 '}';
     }
 
