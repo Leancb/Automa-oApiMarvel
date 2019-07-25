@@ -9,4 +9,4 @@ git clone https://github.com/Leancb/RegistraPonto.git
 No terminal, execute a seguinte operação:
 
 mvn eclipse:eclipse
-No Eclipse/STS, importe o projeto como projeto Gradle.
+No Eclipse/STS, importe o projeto com o projeto Gradle.
