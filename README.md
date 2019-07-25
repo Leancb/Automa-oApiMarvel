@@ -1,4 +1,4 @@
-# Automa-oApiMarvel
+# Automação ApiMarvel
 Automação api marvel, java11 junit5, gradle
 
 Como executar a aplicação
