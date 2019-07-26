@@ -27,7 +27,7 @@ public class ApiServiceStories {
             return testeApiModelStories;
         } catch (Exception e) {
             LOG.error(MSG_EXCEPTION, e);
-            throw e;
+            throw teste.exception.ExceptionEnum.NAO_RETONA_VALOR.getException();
         }
 
 

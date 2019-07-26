@@ -18,7 +18,7 @@ public class ApiServiceEvents {
             RestTemplate restTemplate = new RestTemplate();
             TesteApiModelEvents testeApiModelEvents = GsonUtils.stringToObject(restTemplate.getForObject("https://gateway.marvel.com:443/v1/public/events?ts=1&apikey=96c88fa24ca0e6c5fe37beb77459ddcd&hash=88fb09ca3e362e36e3f6dd10f8132ecd", String.class), TesteApiModelEvents.class);
 
-            if (testeApiModelEvents.getStatus() != null) {
+            if (testeApiModelEvents.getTitle() != null) {
                 LOG.info("Resposta recebida");
             } else {
                 LOG.info("Um erro ocorreu");
@@ -28,7 +28,7 @@ public class ApiServiceEvents {
             return testeApiModelEvents;
         } catch (Exception e) {
             LOG.error(MSG_EXCEPTION, e);
-            throw e;
+            throw teste.exception.ExceptionEnum.NAO_RETONA_VALOR.getException();
         }
 
 

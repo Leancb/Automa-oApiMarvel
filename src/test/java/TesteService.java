@@ -12,7 +12,7 @@ import static teste.teste.service.ApiServiceCharacterDataWrapper.processarApiCha
 import static teste.teste.service.ApiServiceComicDataWrapper.processarApiComicsDataWrapper;
 import static teste.teste.service.ApiServiceCreatorsDataWrapper.processarApiCreatorDataWrapper;
 import static teste.teste.service.ApiServiceEventDataWrapper.processarApiEventDataWrapper;
-
+import static teste.teste.service.ApiServiceSeriesDataWrapper.processarApiSeriesDataWrapper;
 
 
 @RunWith(SpringRunner.class)
@@ -33,7 +33,7 @@ public class TesteService {
 
                 Assert.assertEquals(testeApiCharacter.getName(), "3-D Man");
 
-                System.out.println("Teste para validar que personagem " + testeApiCharacter.getName() + " esta cadastrado passou.");
+                System.out.println("Teste para validar que personagem " + testeApiCharacter.getName() + " está cadastrado passou.");
 
             }
         }
@@ -51,7 +51,7 @@ public class TesteService {
 
                 Assert.assertEquals(testeApiModelComics.getTitle(), "Storm (2006)");
 
-                System.out.println("Teste para validar que o título " + testeApiModelComics.getTitle()+ " esta cadastrado passou.");
+                System.out.println("Teste para validar que o título " + testeApiModelComics.getTitle()+ " está cadastrado passou.");
 
 
             }
@@ -88,12 +88,52 @@ public class TesteService {
 
                 Assert.assertEquals(testeApiModelEvents.getTitle(), "Acts of Vengeance!");
 
-                System.out.println("Teste para validar que o título " + testeApiModelEvents.getTitle()+ " esta cadastrado passou.");
+                System.out.println("Teste para validar que o título " + testeApiModelEvents.getTitle()+ " está cadastrado passou.");
 
             }
         }
 
     }
+
+
+
+    @Test
+    public void validaSerie_Negativo() {
+
+        TesteApiModelSeriesDataWrapper  testeApiModelSeriesDataWrapper = processarApiSeriesDataWrapper();
+
+        for (TesteApiModelEvents testeApiModelEvents :testeApiModelSeriesDataWrapper.getData().getResults()) {
+
+            if (testeApiModelEvents.getTitle().equals("Acts of !")) {
+
+                Assert.assertEquals(testeApiModelEvents.getTitle(), "Acts of !");
+
+                System.out.println("Teste para validar que o título " + testeApiModelEvents.getTitle()+ " está cadastrado passou.");
+
+            }
+        }
+
+    }
+
+
+    @Test
+    public void validaStories_Negativo() {
+
+        TesteApiModelSeriesDataWrapper  testeApiModelSeriesDataWrapper = processarApiSeriesDataWrapper();
+
+        for (TesteApiModelEvents testeApiModelEvents :testeApiModelSeriesDataWrapper.getData().getResults()) {
+
+            if (testeApiModelEvents.getTitle().equals("Acts of !")) {
+
+                Assert.assertEquals(testeApiModelEvents.getTitle(), "Acts of !");
+
+                System.out.println("Teste para validar que o título " + testeApiModelEvents.getTitle()+ " está cadastrado passou.");
+
+            }
+        }
+
+    }
+
 
 
 }

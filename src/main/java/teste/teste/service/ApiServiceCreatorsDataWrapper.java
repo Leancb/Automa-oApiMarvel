@@ -29,7 +29,7 @@ public class ApiServiceCreatorsDataWrapper {
             return testeApiModelCreatorDataWrapper;
         } catch (Exception e) {
             LOG.error(MSG_EXCEPTION, e);
-            throw e;
+            throw teste.exception.ExceptionEnum.NAO_RETONA_VALOR.getException();
         }
 
     }
